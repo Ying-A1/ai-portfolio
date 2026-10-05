@@ -55,11 +55,11 @@ if ('IntersectionObserver' in window) {
 const architectureLayers = [...document.querySelectorAll('.arch-layer')];
 const architectureDescription = document.querySelector('#architectureDescription');
 const architectureDescriptions = [
-  'AI Native 首先改变的是组织计算的方式：系统围绕人的目标、上下文和注意力运行。',
-  'Personal Agent 不只回答当前轮次，它跨会话维护目标、记忆、关系和未完成事项。',
-  'AI Native Web 让服务通过 API、MCP、结构化工具或受控浏览器能力被 Agent 发现与组合。',
-  'Harness 把模型的不确定性装进可治理的运行时：状态、路由、授权、恢复、Trace 与评测。',
-  'Android 原型把概念放进设备权限、生命周期、系统 API 和真实构建流程中检验。'
+  'AI Native 终端提供身份、权限与环境，是 Personal Agent 的载体。',
+  'Personal Agent 以用户的目标、上下文和注意力为中心，持续推进得到授权的任务。',
+  'AI Native Web 通过 API、MCP、工具或受控浏览器连接外部服务。',
+  'Harness 管理上下文、状态、路由、授权、恢复、Trace 与评测。',
+  'Android 原型已完成配置、测试和构建；设备端完整行为仍需继续验证。'
 ];
 
 const activateArchitectureLayer = (index) => {

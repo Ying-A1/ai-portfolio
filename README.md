@@ -1,6 +1,6 @@
 # AI / Portfolio
 
-孙颖的 AI 作品集：AI to B 观点、Claude / Claude Code 工作方法、开源项目与 AI Native 终端实践。站点采用原生 HTML、CSS 与 JavaScript，可直接维护和部署。
+孙颖的 AI 作品集：AI 产品判断、AI 协作开发、开源项目与 AI Native 研究。站点采用原生 HTML、CSS 与 JavaScript，可直接维护和部署。
 
 ## 目录
 
@@ -35,12 +35,12 @@ python3 -m http.server 8000
 ## 内容结构
 
 - AI 视角：从模型能力、工作系统、AI to B 的价值与信任谈起
-- Claude × Claude Code：定义问题、补充上下文、协作执行、人工复盘
-- 项目经历：Slide Studio、Miaoda Game Remix、Transcript Fidelity、Personal Agent、AI Native OS、AI 居民
+- AI 协作开发：一手材料、架构拆解、仓库实现、测试与浏览器验证、Git 维护
+- 项目经历：Slide Studio、Miaoda Game Remix、Transcript Fidelity、Personal Agent 与 AI Native 系统研究
 - 前沿观察：原始来源、小实验与个人表达形成的学习方法
 - 个人经历：百度与字节跳动的 AI 产品、Agent、评测和交付经历
 
-公开页面仅使用姓名“孙颖”，不展示学校、学历、电话、邮箱或其他具体个人信息。项目按 `Open Source`、`Private Prototype`、`Product Research` 标示证据边界。
+公开页面只使用姓名“孙颖”，并收敛其余个人信息。项目按 `Open Source`、`Android Prototype`、`Research Direction` 标示证据边界。
 
 ## 更新方式
 

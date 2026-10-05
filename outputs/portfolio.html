@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AI 理解与项目经验作品集，记录从 AI to B 到 AI Native OS 的观察、实践与方法。">
-  <title>AI / by 你的名字 · 作品集</title>
+  <link rel="icon" href="data:,">
+  <title>AI / 孙颖 · 理解与项目实践</title>
   <style>
     :root {
       --ink: #f4f5f2;
@@ -79,11 +80,10 @@
     .hero-notes { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 3rem; }
     .hero-note { max-width: 17rem; margin-left: auto; color: var(--muted); font-size: .94rem; }
     .hero-note strong { display: block; margin-bottom: .75rem; color: var(--ink); font-size: 1rem; }
-    .hero-art { position: relative; min-height: 18rem; margin-top: 2rem; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: linear-gradient(140deg, rgba(120,182,255,.17), rgba(216,255,95,.06) 45%, rgba(255,141,108,.17)); }
-    .hero-art::before, .hero-art::after { content: ""; position: absolute; border-radius: 50%; filter: blur(2px); }
-    .hero-art::before { width: 17rem; height: 17rem; top: -5rem; right: -3rem; background: radial-gradient(circle, rgba(216,255,95,.88) 0 4%, rgba(120,182,255,.22) 36%, transparent 68%); }
-    .hero-art::after { width: 12rem; height: 12rem; bottom: -4rem; left: 14%; background: radial-gradient(circle, rgba(255,141,108,.75), transparent 68%); }
-    .orb { position: absolute; width: 7rem; height: 7rem; left: 20%; top: 29%; border: 1px solid rgba(244,245,242,.5); border-radius: 43% 57% 48% 52%; transform: rotate(33deg); box-shadow: inset 0 0 0 1.2rem rgba(244,245,242,.04), 0 0 60px rgba(216,255,95,.18); }
+    .hero-art { position: relative; min-height: 18rem; margin-top: 2rem; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: linear-gradient(140deg, rgba(120,182,255,.17), rgba(216,255,95,.06) 45%, rgba(255,141,108,.17)); box-shadow: var(--shadow); }
+    .hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,21,19,.02), rgba(17,21,19,.28)); pointer-events: none; }
+    .hero-image { width: 100%; height: 100%; min-height: 18rem; object-fit: cover; object-position: center; opacity: .92; filter: saturate(.94) contrast(1.04); }
+    .orb { position: absolute; z-index: 1; width: 7rem; height: 7rem; left: 20%; top: 29%; border: 1px solid rgba(244,245,242,.5); border-radius: 43% 57% 48% 52%; transform: rotate(33deg); box-shadow: inset 0 0 0 1.2rem rgba(244,245,242,.04), 0 0 60px rgba(216,255,95,.18); }
     .hero-meta { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2.2rem; }
     .cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
     .button { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .7rem 1.05rem; border: 1px solid var(--line); border-radius: 999px; font-size: .84rem; text-decoration: none; transition: transform .2s ease, background .2s ease, color .2s ease; }
@@ -110,10 +110,14 @@
     .project:nth-child(2) { grid-column: span 5; background: linear-gradient(135deg, rgba(216,255,95,.12), rgba(255,255,255,.025)); }
     .project:nth-child(3) { grid-column: span 5; background: linear-gradient(135deg, rgba(255,141,108,.14), rgba(255,255,255,.025)); }
     .project:nth-child(4) { grid-column: span 7; background: linear-gradient(135deg, rgba(120,182,255,.10), rgba(216,255,95,.06)); }
+    .project:nth-child(5) { grid-column: 3 / span 8; background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(120,182,255,.08)); }
     .project-kicker { color: var(--muted); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
     .project h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
     .project-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.3rem; }
     .tag { padding: .3rem .55rem; border: 1px solid var(--line); border-radius: 5px; color: var(--muted); font-size: .72rem; }
+    .project-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.25rem; }
+    .project-link { color: var(--accent); font-size: .8rem; text-underline-offset: .25em; }
+    .project-link:hover { color: var(--ink); }
 
     .learning-grid { grid-template-columns: .95fr 1.05fr; align-items: stretch; }
     .signal-list { display: grid; gap: .8rem; }
@@ -176,7 +180,7 @@
     <div class="shell nav">
       <a class="brand" href="#top" aria-label="返回首页">
         <span class="brand-mark" aria-hidden="true">AI</span>
-        <span>AI / Portfolio</span>
+        <span>孙颖 / AI Portfolio</span>
       </a>
       <nav aria-label="主导航">
         <ul class="nav-list">
@@ -194,13 +198,13 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div>
-          <p class="eyebrow">AI understanding / practice / view</p>
-          <h1 id="hero-title" class="display">把 AI<br><em>做成日常</em></h1>
-          <p class="lede">一份关于 AI 理解、产品实践与持续观察的个人档案。关注模型如何进入真实工作流，也关注人与工具如何共同形成新的工作方式。</p>
+          <p class="eyebrow">SUN YING / AI PRODUCT · AGENT · VIEW</p>
+          <h1 id="hero-title" class="display">把 AI<br><em>做成系统</em></h1>
+          <p class="lede">我是孙颖，数据科学背景的 AI 产品与解决方案实践者。关注模型如何进入真实工作流，也关注上下文、权限、工具和证据如何把一次回答变成可交付的结果。</p>
           <div class="hero-meta" aria-label="个人标签">
             <span class="pill">AI to B</span>
-            <span class="pill">Product thinking</span>
-            <span class="pill">Agentic workflow</span>
+            <span class="pill">Agent / RAG</span>
+            <span class="pill">Product × delivery</span>
           </div>
           <div class="cta-row">
             <a class="button button-primary" href="#projects">查看项目</a>
@@ -208,7 +212,7 @@
           </div>
         </div>
         <aside class="hero-notes" aria-label="作品集说明">
-          <div class="hero-art" aria-label="抽象生成背景占位区域" role="img"><span class="orb" aria-hidden="true"></span></div>
+          <div class="hero-art"><img class="hero-image" src="assets/hero-signal.png" alt="抽象的蓝绿色光线与信号纹理" loading="eager"><span class="orb" aria-hidden="true"></span></div>
           <p class="hero-note"><strong>一件事</strong>让复杂的技术能力变成可被理解、可被使用、可被持续改进的工作系统。</p>
         </aside>
       </div>
@@ -220,15 +224,15 @@
           <p class="eyebrow">01 / point of view</p>
           <div>
             <h2 id="beliefs-title" class="section-title">我的 AI 视角</h2>
-            <p class="section-intro">AI 的价值不只在于回答得更快，而在于重新组织问题、流程和决策。我的关注点始终落在“能力如何落地”上。</p>
+            <p class="section-intro">AI 的价值不只在于回答得更快，而在于重新组织问题、流程和决策。我的关注点始终落在“能力如何落地、结果如何被验证”上。</p>
           </div>
         </div>
         <div class="grid belief-grid">
-          <article class="card belief-card"><div><span class="belief-index">01</span><h3>从模型到系统</h3><p>模型是能力的起点，场景、数据、工具和反馈回路才决定能力能否稳定发生。</p></div><span class="tag">systems over demos</span></article>
-          <article class="card belief-card"><div><span class="belief-index">02</span><h3>AI to B 的关键</h3><p>企业客户购买的是确定的结果与可管理的风险：流程嵌入、权限边界、交付证据和持续运营缺一不可。</p></div><span class="tag">value × trust</span></article>
-          <article class="card belief-card"><div><span class="belief-index">03</span><h3>人仍然在回路中</h3><p>好的 AI 产品让人把注意力放回判断、创造与关系，而不是把人藏进自动化黑箱。</p></div><span class="tag">human in the loop</span></article>
+          <article class="card belief-card"><div><span class="belief-index">01</span><h3>从模型到系统</h3><p>模型是能力的起点；场景、数据、工具、状态、权限与反馈回路，才决定能力能否稳定发生。</p></div><span class="tag">systems over demos</span></article>
+          <article class="card belief-card"><div><span class="belief-index">02</span><h3>AI to B 先解决交付</h3><p>企业客户购买的是确定的结果与可管理的风险：业务流程嵌入、评测指标、协作闭环与交付证据缺一不可。</p></div><span class="tag">value × trust</span></article>
+          <article class="card belief-card"><div><span class="belief-index">03</span><h3>AI Native 归还注意力</h3><p>好的 AI 终端围绕人的目标、上下文和注意力组织计算，把判断权交还给人，同时维护容易掉落的小闭环。</p></div><span class="tag">human in the loop</span></article>
         </div>
-        <blockquote class="quote">“我不把 AI 当作一个按钮，而把它当作一位能进入工作现场、被校准、被复盘的协作者。”</blockquote>
+        <blockquote class="quote">“我不把 AI 当作一个按钮，而把它当作一套能进入工作现场、被授权、被验证、被复盘的协作系统。”</blockquote>
       </div>
     </section>
 
@@ -236,13 +240,13 @@
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">02 / working with AI</p>
-          <div><h2 id="workflow-title" class="section-title">Claude × Claude Code</h2><p class="section-intro">把大模型放在合适的环节：先澄清问题，再让它读懂上下文、完成小步迭代，最后由人验证结果。</p></div>
+          <div><h2 id="workflow-title" class="section-title">Claude × Claude Code</h2><p class="section-intro">我把 Claude 用在问题拆解、表达和方案比较，把 Claude Code 用在读仓库、改文件、跑测试和复核结果。关键不是“让 AI 全部代做”，而是让每一步都留下可检查的证据。</p></div>
         </div>
         <div class="flow" aria-label="使用 Claude 和 Claude Code 的工作流程">
-          <article class="flow-step"><span class="step-number">STEP 01</span><h3>定义问题</h3><p>把模糊目标拆成可检查的输入、约束和完成标准。</p></article>
-          <article class="flow-step"><span class="step-number">STEP 02</span><h3>提供上下文</h3><p>给出文件、历史决策、真实样例与边界，降低猜测。</p></article>
-          <article class="flow-step"><span class="step-number">STEP 03</span><h3>协作执行</h3><p>用 Claude 思考与表达，用 Claude Code 修改、运行和验证。</p></article>
-          <article class="flow-step"><span class="step-number">STEP 04</span><h3>人做复盘</h3><p>检查用户体验、数据与风险，把结果沉淀成下一次的上下文。</p></article>
+          <article class="flow-step"><span class="step-number">STEP 01</span><h3>定义问题</h3><p>先写清目标、约束、输入、完成标准和风险边界，再决定让模型参与哪一段。</p></article>
+          <article class="flow-step"><span class="step-number">STEP 02</span><h3>装入上下文</h3><p>把仓库、文档、历史决策、真实样例与当前日志整理成最小可用的上下文包。</p></article>
+          <article class="flow-step"><span class="step-number">STEP 03</span><h3>小步执行</h3><p>Claude 负责拆解与表达，Claude Code 负责直接修改文件、运行测试和生成可审阅 diff。</p></article>
+          <article class="flow-step"><span class="step-number">STEP 04</span><h3>人做复核</h3><p>检查界面、数据、日志和未覆盖边界，把可靠结论沉淀为下一轮可以复用的上下文。</p></article>
         </div>
       </div>
     </section>
@@ -251,13 +255,14 @@
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">03 / selected work</p>
-          <div><h2 id="projects-title" class="section-title">项目是我的思考方式</h2><p class="section-intro">从内容生产到个人智能体，再到 AI Native 的新终端，我用项目验证对未来工作形态的判断。</p></div>
+          <div><h2 id="projects-title" class="section-title">项目是我的思考方式</h2><p class="section-intro">从可编辑的 AI Slide，到个人上下文 Agent，再到 AI Native 终端，我用可运行的原型验证对未来工作形态的判断。</p></div>
         </div>
         <div class="grid projects-grid">
-          <article class="card project"><div><span class="project-kicker">Open source / presentation</span><h3>Slide Studio · 秒哒</h3><p>探索从内容结构、视觉系统到可编辑产物的 AI Slide 工作流。</p></div><div class="project-tags"><span class="tag">Open source</span><span class="tag">Generative UI</span><span class="tag">Content → artifact</span></div></article>
-          <article class="card project"><div><span class="project-kicker">Personal system</span><h3>Personal Agent</h3><p>把个人知识、偏好与日常任务连接起来，让 Agent 成为长期协作的上下文层。</p></div><div class="project-tags"><span class="tag">Memory</span><span class="tag">Tools</span></div></article>
-          <article class="card project"><div><span class="project-kicker">Future interface</span><h3>AI Native OS</h3><p>重新想象应用、文件和意图之间的关系：从打开 App，转向直接表达目标。</p></div><div class="project-tags"><span class="tag">OS concept</span><span class="tag">Intent</span></div></article>
-          <article class="card project"><div><span class="project-kicker">Social agent</span><h3>AI 居民</h3><p>思考 AI 如何拥有身份、空间与关系，在真实生活中形成可持续的陪伴与协作。</p></div><div class="project-tags"><span class="tag">Agent society</span><span class="tag">Human × AI</span></div></article>
+          <article class="card project"><div><span class="project-kicker">Open source / generative UI</span><h3>Slide Studio</h3><p>我维护的单文件、零依赖 HTML 幻灯片编辑器：可与 AI 对话生成 deck，并在浏览器内编辑文本、排版、顺序和背景，再导出可交付的演示文稿。秒哒 Skill 的方向延伸了“表达想法 → 可运行作品”的半 DIY 工作流。</p><div class="project-links"><a class="project-link" href="https://github.com/Ying-A1/slide-studio" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="project-link" href="https://ying-a1.github.io/slide-studio/" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></div><div class="project-tags"><span class="tag">Open source</span><span class="tag">Editable artifact</span><span class="tag">秒哒 direction</span></div></article>
+          <article class="card project"><div><span class="project-kicker">Personal context / local demo</span><h3>Personal Agent</h3><p>在 AI Phone Harness Demo 中，跨日历、联系人、备忘录和文件建立个人上下文索引；Harness 将自然语言目标转成计划，在副作用前审批，用幂等键与 read-back verifier 处理超时和重复写入。</p></div><div class="project-tags"><span class="tag">Context graph</span><span class="tag">Approval</span><span class="tag">Verification</span></div></article>
+          <article class="card project"><div><span class="project-kicker">Product thesis / research</span><h3>AI Native OS</h3><p>提出终端应围绕人的目标、上下文和注意力组织计算；将系统拆成个人世界模型、任务运行时、能力网络、信任内核、注意力系统与生成式界面。</p></div><div class="project-tags"><span class="tag">OS concept</span><span class="tag">Intent</span><span class="tag">Trust kernel</span></div></article>
+          <article class="card project"><div><span class="project-kicker">Android / OpenMinis adaptation</span><h3>栖光 NIA · AI 居民</h3><p>基于 OpenMinis 做 Android 端品牌化与能力定制：模型调用、Linux/PRoot 沙盒、Skills、Memory，以及 Calendar、Contacts、Notification 等原生能力桥接。当前以 Demo 与研究验证为边界，真机可用范围取决于设备、权限和具体连接器。</p><div class="project-links"><a class="project-link" href="https://github.com/OpenMinis/OpenMinis" target="_blank" rel="noopener noreferrer">OpenMinis source ↗</a><a class="project-link" href="https://openminis.app" target="_blank" rel="noopener noreferrer">OpenMinis site ↗</a></div></div><div class="project-tags"><span class="tag">Android</span><span class="tag">Native offload</span><span class="tag">Demo boundary</span></div></article>
+          <article class="card project"><div><span class="project-kicker">Personal project / codebase agent</span><h3>RepoMind</h3><p>设计 Router—Planner—Tool—Reviewer 状态机，支持 checkpoint、断点恢复、修改类工具人工审批和可替换 ModelProvider；以混合检索返回文件/行号级证据，并用 SQLite 分离任务状态与多层 Memory。</p></div><div class="project-tags"><span class="tag">Evidence chain</span><span class="tag">RAG</span><span class="tag">Auditable trace</span></div></article>
         </div>
       </div>
     </section>
@@ -277,18 +282,18 @@
 
     <section class="section" id="resume" aria-labelledby="resume-title">
       <div class="shell resume-grid">
-        <div class="resume-aside"><p class="eyebrow">05 / about me</p><h2 id="resume-title" class="section-title">经历，留下了方法。</h2><p>这里放置个人简介、教育背景与实习经历。建议替换为经核验的简历信息和可公开链接。</p><a class="button button-primary" href="mailto:hello@example.com">联系我 <span aria-hidden="true">↗</span></a></div>
-        <div class="timeline" aria-label="教育与实习经历时间线">
-          <article class="timeline-item"><time class="timeline-time" datetime="2024">[时间]</time><div><h3>[公司 / 团队] · [职位]</h3><p>在这里补充职责、项目范围与可公开的结果。</p></div></article>
-          <article class="timeline-item"><time class="timeline-time" datetime="2023">[时间]</time><div><h3>[公司 / 团队] · [职位]</h3><p>在这里补充与 AI 产品、研究或交付相关的经历。</p></div></article>
-          <article class="timeline-item"><time class="timeline-time" datetime="2022">[时间]</time><div><h3>[学校 / 专业]</h3><p>在这里补充教育背景、研究方向或长期关注的问题。</p></div></article>
+        <div class="resume-aside"><p class="eyebrow">05 / about me</p><h2 id="resume-title" class="section-title">经历，留下了方法。</h2><p>我把产品判断、技术验证和交付证据放在同一条工作链路里：先厘清真实需求，再用原型、测试与可追溯材料确认能力边界。</p><a class="button button-primary" href="https://github.com/Ying-A1" target="_blank" rel="noopener noreferrer">GitHub 主页 <span aria-hidden="true">↗</span></a></div>
+        <div class="timeline" aria-label="能力与经历概览">
+          <article class="timeline-item"><span class="timeline-time">企业 AI / GPU</span><div><h3>解决方案验证与交付实践</h3><p>围绕国产 GPU、模型推理与企业 AI 场景开展能力映射、环境验证、指标记录和交付材料整理；明确区分官方能力、实际执行结果与尚未覆盖的验收边界。</p></div></article>
+          <article class="timeline-item"><span class="timeline-time">Agent / AI Native</span><div><h3>个人上下文与可信执行探索</h3><p>围绕上下文组织、工具调用、权限审批、状态恢复和结果复核制作原型，持续研究 Agent 如何进入终端与真实工作流。</p></div></article>
+          <article class="timeline-item"><span class="timeline-time">开源 AI 创作</span><div><h3>从想法到可编辑作品</h3><p>通过 Slide Studio 等个人项目探索生成式界面与人机协作，把自然语言构思转化为可运行、可编辑、可分享的网页作品。</p></div></article>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-inner"><p>© <span id="year">2026</span> 你的名字 · Made with curiosity.</p><p>可持续更新的个人作品集</p></div>
+    <div class="shell footer-inner"><p>© <span id="year">2026</span> 孙颖 · Made with curiosity.</p><p>可持续更新的个人作品集</p></div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>

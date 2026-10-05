@@ -9,3 +9,5 @@ Thumbs.db
 *.tmp
 *.temp
 
+# Playwright CLI artifacts
+.playwright-cli/

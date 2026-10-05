@@ -58,6 +58,20 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
 }
 
+// Native lazy loading normally handles deep links, but proactively request nearby
+// images so section jumps and long scroll containers never reveal an empty frame.
+const lazyImages = [...document.querySelectorAll('img[loading="lazy"]')];
+if ('IntersectionObserver' in window) {
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.loading = 'eager';
+      imageObserver.unobserve(entry.target);
+    });
+  }, { rootMargin: '1200px 0px' });
+  lazyImages.forEach((image) => imageObserver.observe(image));
+}
+
 const trace = document.querySelector('.execution-trace');
 const traceSteps = [...document.querySelectorAll('.trace-step')];
 const activateTrace = (index) => {

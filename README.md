@@ -8,8 +8,13 @@
 .
 ├── README.md
 ├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── pages.yml
 └── outputs/
-    └── portfolio.html
+    ├── index.html
+    └── assets/
+        └── hero-signal.png
 ```
 
 ## 本地预览
@@ -20,7 +25,7 @@
 python3 -m http.server 8000
 ```
 
-然后访问 <http://localhost:8000/outputs/portfolio.html>。
+然后访问 <http://localhost:8000/outputs/>。
 
 ## 内容结构
 
@@ -32,10 +37,10 @@ python3 -m http.server 8000
 
 ## 更新方式
 
-这是一个可以持续用 Git 维护的静态站点。日常修改 `outputs/portfolio.html`，确认浏览器效果后提交：
+这是一个可以持续用 Git 维护的静态站点。日常修改 `outputs/index.html`，确认浏览器效果后提交：
 
 ```bash
-git add README.md .gitignore outputs/portfolio.html
+git add README.md outputs/index.html outputs/assets
 git commit -m "更新作品集"
 ```
 
@@ -46,7 +51,7 @@ git remote add origin <your-github-repository-url>
 git push -u origin main
 ```
 
-当前仓库不依赖 npm、打包器或外部资源，适合直接发布到 GitHub Pages、静态托管服务或个人服务器。
+当前仓库不依赖 npm、打包器或外部资源。`.github/workflows/pages.yml` 会在 `main` 分支更新时将 `outputs/` 目录发布到 GitHub Pages，也可以在 GitHub Actions 中手动触发。首次发布前，在仓库 `Settings → Pages` 中将 `Source` 设为 `GitHub Actions`。
 
 ## 发布前检查
 

@@ -1,0 +1,11 @@
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Editor swap and temporary files
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+

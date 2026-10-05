@@ -48,6 +48,7 @@ if ('IntersectionObserver' in window) {
     }
   }, { threshold: .2 });
   mediaObserver.observe(projectVisual);
+  window.setTimeout(() => projectVisual.classList.add('reveal-failsafe'), 1800);
 } else {
   projectVisual.classList.add('is-visible');
 }
@@ -74,7 +75,6 @@ const architectureEvidenceCopy = [
 if (!architectureStatus) {
   const evidencePanel = document.createElement('div');
   evidencePanel.className = 'architecture-evidence';
-  evidencePanel.setAttribute('aria-live', 'polite');
   evidencePanel.innerHTML = '<span>CURRENT EVIDENCE</span><strong id="architectureStatus">载体与环境</strong><p id="architectureEvidence">研究对象包括身份、权限、设备事件与执行环境；当前以 Android 原型验证系统约束。</p>';
   architectureDescription.insertAdjacentElement('afterend', evidencePanel);
 }
@@ -142,6 +142,21 @@ if ('IntersectionObserver' in window) {
   signalPath.style.setProperty('--path-progress', '100%');
 }
 
+const evidenceBlocks = [...document.querySelectorAll('[data-evidence]')];
+if ('IntersectionObserver' in window) {
+  const evidenceObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-evidence-visible');
+      evidenceObserver.unobserve(entry.target);
+    });
+  }, { threshold: .18 });
+  evidenceBlocks.forEach((block) => evidenceObserver.observe(block));
+  window.setTimeout(() => evidenceBlocks.forEach((block) => block.classList.add('is-evidence-visible')), 2200);
+} else {
+  evidenceBlocks.forEach((block) => block.classList.add('is-evidence-visible'));
+}
+
 const contextCanvas = document.querySelector('#contextField');
 const hero = document.querySelector('.hero');
 if (contextCanvas && hero) {
@@ -201,4 +216,5 @@ if (contextCanvas && hero) {
 if (reducedMotion) {
   projectVisual.classList.add('is-visible');
   signalPath.classList.add('is-visible');
+  evidenceBlocks.forEach((block) => block.classList.add('is-evidence-visible'));
 }

@@ -87,9 +87,9 @@ button { font: inherit; }
 .thesis-rail span { display: block; width: 33.333%; height: 100%; background: var(--signal); transform-origin: left; transition: transform var(--motion-section) var(--ease-editorial), width var(--motion-section) var(--ease-editorial); }
 .thesis-sequence[data-active="1"] .thesis-rail span { width: 66.666%; }
 .thesis-sequence[data-active="2"] .thesis-rail span { width: 100%; background: var(--proof); }
-.thesis-step { min-height: 23rem; padding: 2rem clamp(1.25rem, 2.5vw, 2.5rem) 2rem 0; opacity: .76; transition: opacity var(--motion-state), background-color var(--motion-state); }
+.thesis-step { min-height: 23rem; padding: 2rem clamp(1.25rem, 2.5vw, 2.5rem) 2rem 0; transition: background-color var(--motion-state); }
 .thesis-step + .thesis-step { padding-left: clamp(1.25rem, 2.5vw, 2.5rem); border-left: 1px solid var(--rule-dark); }
-.thesis-step.is-active { opacity: 1; background: rgba(76,125,255,.035); }
+.thesis-step.is-active { background: rgba(76,125,255,.035); }
 .thesis-step-boundary.is-active { background: rgba(196,164,105,.06); }
 .thesis-no, .thesis-step small { color: var(--signal); font: 650 .7rem var(--mono); letter-spacing: .1em; }
 .thesis-step-boundary .thesis-no, .thesis-step-boundary small { color: #876b36; }
@@ -142,8 +142,8 @@ button { font: inherit; }
 .method-intro > p:last-child { max-width: 34rem; margin: 2rem 0 0; color: #555a5f; }
 .execution-trace { position: relative; margin: 0; border-top: 1px solid var(--rule-dark); }
 .execution-trace::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: linear-gradient(to bottom, var(--signal) 0 var(--trace-progress, 0%), rgba(23,25,27,.12) var(--trace-progress, 0%) 100%); }
-.trace-step { min-height: 10.5rem; display: grid; grid-template-columns: 3.5rem minmax(14rem, 1fr); gap: 1.25rem; align-items: center; padding: 1.5rem 1rem 1.5rem 1.6rem; border-bottom: 1px solid var(--rule-dark); opacity: .74; transition: opacity var(--motion-state), background-color var(--motion-state), transform var(--motion-state) var(--ease-editorial); }
-.trace-step.is-active { opacity: 1; background: rgba(76,125,255,.05); transform: translateX(4px); }
+.trace-step { min-height: 10.5rem; display: grid; grid-template-columns: 3.5rem minmax(14rem, 1fr); gap: 1.25rem; align-items: center; padding: 1.5rem 1rem 1.5rem 1.6rem; border-bottom: 1px solid var(--rule-dark); transition: background-color var(--motion-state), transform var(--motion-state) var(--ease-editorial); }
+.trace-step.is-active { background: rgba(76,125,255,.05); transform: translateX(4px); }
 .trace-no { color: var(--signal); font: 650 .78rem var(--mono); }
 .trace-step > div:nth-child(2) { display: grid; grid-template-columns: 5.5rem 1fr; align-items: baseline; gap: .25rem 1rem; }
 .trace-step p { margin: 0; color: var(--muted-dark); font: 650 .72rem var(--mono); letter-spacing: .1em; }
@@ -227,8 +227,8 @@ button { font: inherit; }
 .architecture-evidence strong { display: block; margin-top: .8rem; font-size: 1rem; }
 .architecture-evidence p { margin: .5rem 0 0; color: #62676b; font-size: .85rem; }
 .architecture-stack { border-top: 1px solid var(--rule-dark); }
-.arch-layer { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1rem; padding: 1.4rem .8rem; border-bottom: 1px solid var(--rule-dark); border-left: 3px solid transparent; opacity: .76; cursor: default; transition: background-color .3s ease, border-color .3s ease, opacity .3s ease; }
-.arch-layer:hover, .arch-layer:focus-visible, .arch-layer.is-active { border-left-color: var(--signal); background: rgba(76, 125, 255, .07); opacity: 1; }
+.arch-layer { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1rem; padding: 1.4rem .8rem; border-bottom: 1px solid var(--rule-dark); border-left: 3px solid transparent; cursor: default; transition: background-color .3s ease, border-color .3s ease; }
+.arch-layer:hover, .arch-layer:focus-visible, .arch-layer.is-active { border-left-color: var(--signal); background: rgba(76, 125, 255, .07); }
 .arch-layer > span { padding-top: .2rem; color: var(--signal); font: 650 .76rem var(--mono); }
 .arch-layer small { color: var(--muted-dark); font: 650 .7rem var(--mono); letter-spacing: .1em; }
 .arch-layer h3 { margin: .2rem 0 .2rem; font-size: 1.28rem; }
@@ -240,8 +240,8 @@ button { font: inherit; }
 .view-intro { max-width: 40rem; margin: 1.6rem 0 0; color: #aeb3b9; }
 .signal-path { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .signal-path::before { content: ""; position: absolute; z-index: 2; top: -2px; left: 0; width: var(--path-progress, 0%); height: 3px; background: var(--signal); transition: width var(--motion-section) var(--ease-editorial); }
-.signal-node { opacity: .74; transition: opacity var(--motion-state), transform var(--motion-state) var(--ease-editorial); }
-.signal-path.is-visible .signal-node { opacity: 1; transform: translateY(0); }
+.signal-node { transition: transform var(--motion-state) var(--ease-editorial); }
+.signal-path.is-visible .signal-node { transform: translateY(0); }
 .has-js .signal-node { transform: translateY(8px); }
 .signal-path.is-visible .signal-node:nth-child(2) { transition-delay: 80ms; }
 .signal-path.is-visible .signal-node:nth-child(3) { transition-delay: 160ms; }

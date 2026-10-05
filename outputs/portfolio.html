@@ -134,6 +134,8 @@
 
     .resume-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 4rem; }
     .resume-aside p { max-width: 20rem; color: var(--muted); }
+    .resume-role { margin: .85rem 0 1.5rem; color: var(--ink) !important; font-family: var(--serif); font-size: 1.15rem; line-height: 1.35; }
+    .resume-label { display: block; margin: 2rem 0 .55rem; color: var(--muted); font-size: .7rem; font-weight: 760; letter-spacing: .16em; text-transform: uppercase; }
     .timeline { display: grid; gap: 0; }
     .timeline-item { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; padding: 1.35rem 0; border-top: 1px solid var(--line); }
     .timeline-item:last-child { border-bottom: 1px solid var(--line); }
@@ -200,7 +202,7 @@
         <div>
           <p class="eyebrow">SUN YING / AI PRODUCT · AGENT · VIEW</p>
           <h1 id="hero-title" class="display">把 AI<br><em>做成系统</em></h1>
-          <p class="lede">我是孙颖，数据科学背景的 AI 产品与解决方案实践者。关注模型如何进入真实工作流，也关注上下文、权限、工具和证据如何把一次回答变成可交付的结果。</p>
+          <p class="lede">我是孙颖，一名 AI Agent 与 LLM 应用实践者。关注模型如何进入真实工作流，也关注上下文、权限、工具和证据如何把一次回答变成可交付的结果。</p>
           <div class="hero-meta" aria-label="个人标签">
             <span class="pill">AI to B</span>
             <span class="pill">Agent / RAG</span>
@@ -282,11 +284,17 @@
 
     <section class="section" id="resume" aria-labelledby="resume-title">
       <div class="shell resume-grid">
-        <div class="resume-aside"><p class="eyebrow">05 / about me</p><h2 id="resume-title" class="section-title">经历，留下了方法。</h2><p>我把产品判断、技术验证和交付证据放在同一条工作链路里：先厘清真实需求，再用原型、测试与可追溯材料确认能力边界。</p><a class="button button-primary" href="https://github.com/Ying-A1" target="_blank" rel="noopener noreferrer">GitHub 主页 <span aria-hidden="true">↗</span></a></div>
-        <div class="timeline" aria-label="能力与经历概览">
-          <article class="timeline-item"><span class="timeline-time">企业 AI / GPU</span><div><h3>解决方案验证与交付实践</h3><p>围绕国产 GPU、模型推理与企业 AI 场景开展能力映射、环境验证、指标记录和交付材料整理；明确区分官方能力、实际执行结果与尚未覆盖的验收边界。</p></div></article>
-          <article class="timeline-item"><span class="timeline-time">Agent / AI Native</span><div><h3>个人上下文与可信执行探索</h3><p>围绕上下文组织、工具调用、权限审批、状态恢复和结果复核制作原型，持续研究 Agent 如何进入终端与真实工作流。</p></div></article>
-          <article class="timeline-item"><span class="timeline-time">开源 AI 创作</span><div><h3>从想法到可编辑作品</h3><p>通过 Slide Studio 等个人项目探索生成式界面与人机协作，把自然语言构思转化为可运行、可编辑、可分享的网页作品。</p></div></article>
+        <div class="resume-aside"><p class="eyebrow">05 / about me</p><h2 id="resume-title" class="section-title">孙颖</h2><p class="resume-role">AI Agent 与 LLM 应用实践者</p><p>我把产品判断、技术验证和交付证据放在同一条工作链路里：先厘清真实需求，再用原型、测试与可追溯材料确认能力边界。</p><a class="button button-primary" href="https://github.com/Ying-A1" target="_blank" rel="noopener noreferrer">GitHub 主页 <span aria-hidden="true">↗</span></a></div>
+        <div class="timeline" aria-label="教育、实习与项目经历">
+          <span class="resume-label">Experience</span>
+          <article class="timeline-item"><span class="timeline-time">2026.02—06</span><div><h3>百度 · 解决方案工程师实习生</h3><p>面向 OPPO 10–12 万/天的多模态广告素材审核场景，基于千帆 AppBuilder 重构工作流 Agent，将任务拆为文案质量、素材美观度、落地页质量、相关性四项指标；通过 Prompt、规则与样本迭代使相关性准确率提升 19pp，推动项目成功中标。参与 vivo 小 V 助手与 AI 搜索评测，围绕信源、时效、免责声明、搜索与风控 Badcase 建立产品、研发、算法及客户协同闭环。</p></div></article>
+          <article class="timeline-item"><span class="timeline-time">2025.06—08</span><div><h3>字节跳动 · 数据科学实习生</h3><p>研发智能审核平台的多模态 Prompt 自动优化模块，结合正负样本反馈迭代 MCTS 策略，部分场景效果最高提升 13pp，并补充多指标评估。参与 RAG 知识问答 Agent 的任务拆解、意图识别、知识检索与测试，内部部署后标准化测试准确率达 95%。</p></div></article>
+          <span class="resume-label">Education</span>
+          <article class="timeline-item"><span class="timeline-time">2024.09—2026.06</span><div><h3>香港城市大学（东莞） · 数据科学硕士</h3><p>GPA 3.60/4.0，Distinction（卓越）。</p></div></article>
+          <article class="timeline-item"><span class="timeline-time">2020.09—2024.06</span><div><h3>广州大学 · 电气工程及其自动化学士</h3><p>GPA 3.78/4.0，专业前 3%。</p></div></article>
+          <span class="resume-label">Selected projects</span>
+          <article class="timeline-item"><span class="timeline-time">2026.10—至今</span><div><h3>RepoMind · 基于证据链的代码库 Agent</h3><p>设计 Router—Planner—Tool—Reviewer 状态机，支持 checkpoint、断点恢复、修改审批和可替换 ModelProvider；通过混合检索返回文件与行号级证据，并分离任务状态及多层 Memory。</p></div></article>
+          <article class="timeline-item"><span class="timeline-time">2025.01—03</span><div><h3>大模型数学推理能力评估</h3><p>搭建 Qwen2.5-Math 与 DeepSeek-R1-Qwen 的评估框架，对比 Chain-of-Thought、Self-Refine、Self-Consistency 在 GSM8K、MATH-500、AIME 2024 上的表现，并输出自动评估与 HTML 报告。</p></div></article>
         </div>
       </div>
     </section>

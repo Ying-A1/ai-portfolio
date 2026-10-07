@@ -69,9 +69,12 @@
 
   const cinema = document.querySelector('[data-project-cinema]');
   const cinemaBeats = [...document.querySelectorAll('[data-cinema-beat]')];
+  const cinemaFrames = [...document.querySelectorAll('[data-cinema-frame]')];
   const cinemaStateLabel = document.querySelector('.cinema-stage-state');
   const cinemaCaptionStep = document.querySelector('.cinema-stage-caption span');
-  const cinemaNames = ['GENERATE', 'EDIT', 'ORGANIZE', 'EXPORT'];
+  const cinemaCaptionCopy = document.querySelector('.cinema-stage-caption-copy');
+  const cinemaNames = ['OPEN', 'EDIT', 'ORGANIZE', 'EXPORT'];
+  const cinemaCaptions = ['打开后的单文件 Deck', '直接编辑标题与字形', '管理页面并导出 HTML', '将当前 DOM 导出为 HTML'];
   const cinemaNarrowQuery = matchMedia('(max-width: 760px)');
   let cinemaObserver;
   let cinemaTitleObserver;
@@ -84,9 +87,15 @@
       beat.classList.toggle('is-active', active);
       if (active) beat.setAttribute('aria-current', 'step'); else beat.removeAttribute('aria-current');
     });
+    cinemaFrames.forEach((frame, index) => {
+      const active = index === next;
+      frame.classList.toggle('is-active', active);
+      if (active) frame.removeAttribute('aria-hidden'); else frame.setAttribute('aria-hidden', 'true');
+    });
     const step = String(next + 1).padStart(2, '0');
     if (cinemaStateLabel) cinemaStateLabel.textContent = `${step} · ${cinemaNames[next]}`;
     if (cinemaCaptionStep) cinemaCaptionStep.textContent = `${step} / 04`;
+    if (cinemaCaptionCopy) cinemaCaptionCopy.textContent = cinemaCaptions[next];
   };
   const configureCinema = () => {
     cinemaObserver?.disconnect();

@@ -66,27 +66,40 @@
           <div class="dossier-register"><span>PROJECT DOSSIER / 01</span><span>OPEN SOURCE · MIT</span></div>
           <p class="project-cinema-kicker">CODING AGENT SKILL</p>
           <h3>Slide Studio</h3>
-          <p class="project-cinema-summary">单文件、零运行时依赖的 HTML 幻灯片编辑器。生成后仍能在浏览器里编辑、重排并导出，让 AI 产物继续进入人的工作流。</p>
+          <p class="project-cinema-summary">slide-studio 把 AI 生成的 HTML 幻灯片从一次性交付，变成打开后还能继续编辑、重排、换背景并导出的工作文件。</p>
           <div class="project-cinema-display" aria-hidden="true"><span>SLIDE</span><span>STUDIO</span></div>
         </header>
         <div class="project-cinema-scene">
           <div class="project-cinema-stage">
-            <div class="cinema-stage-register" aria-hidden="true"><span>REAL INTERFACE / 1280 × 720</span><span class="cinema-stage-state">01 · GENERATE</span></div>
+            <div class="cinema-stage-register" aria-hidden="true"><span>REAL PRODUCT STATES / 1440 × 900</span><span class="cinema-stage-state">01 · OPEN</span></div>
             <a class="cinema-screen" href="https://ying-a1.github.io/slide-studio/" target="_blank" rel="noopener noreferrer" aria-label="打开 Slide Studio 在线演示">
-              <span class="cinema-screen-inner"><img src="assets/slide-studio-cover.png" width="1280" height="720" loading="lazy" decoding="async" alt="Slide Studio 浏览器编辑器真实界面截图"><span class="cinema-focus-frame" aria-hidden="true"></span></span>
+              <span class="cinema-screen-inner">
+                <img class="cinema-frame is-active" data-cinema-frame="0" src="assets/slide-studio/live-cover.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio 打开后的封面幻灯片与浏览器编辑工具栏">
+                <img class="cinema-frame" data-cinema-frame="1" src="assets/slide-studio/inline-text-editing.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio E 模式中直接编辑标题并显示文字格式栏" aria-hidden="true">
+                <img class="cinema-frame" data-cinema-frame="2" src="assets/slide-studio/organizer-page-management.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio O 模式的页面管理器，包含重排、添加、复制、删除与导出操作" aria-hidden="true">
+                <img class="cinema-frame" data-cinema-frame="3" src="assets/slide-studio/export-flow.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio 导出流程所使用的真实幻灯片状态" aria-hidden="true">
+              </span>
             </a>
             <div class="cinema-progress" aria-hidden="true"><span></span></div>
-            <p class="cinema-stage-caption"><span>01 / 04</span> 浏览器里的真实编辑界面</p>
+            <p class="cinema-stage-caption"><span>01 / 04</span><b class="cinema-stage-caption-copy">打开后的单文件 Deck</b></p>
           </div>
           <ol class="project-cinema-beats" aria-label="Slide Studio 工作流程">
-            <li class="cinema-beat is-active" data-cinema-beat="0"><span>01 / GENERATE</span><h4>先生成一个<br>独立的 HTML Deck。</h4><p>从结构和内容出发，得到可以直接打开的单文件幻灯片。</p></li>
-            <li class="cinema-beat" data-cinema-beat="1"><span>02 / EDIT</span><h4>生成之后，<br>仍然可以继续编辑。</h4><p>在浏览器里修改文字、布局与视觉表达，不把第一次生成当成终稿。</p></li>
-            <li class="cinema-beat" data-cinema-beat="2"><span>03 / ORGANIZE</span><h4>把页面重新组织成<br>完整的叙事。</h4><p>重排、增删和复制页面，让结构跟着人的判断继续变化。</p></li>
-            <li class="cinema-beat" data-cinema-beat="3"><span>04 / EXPORT</span><h4>带着修改结果，<br>回到交付。</h4><p>导出修改后的干净文件，把 AI 生成接进真实工作流。</p></li>
+            <li class="cinema-beat is-active" data-cinema-beat="0"><span>01 / OPEN</span><h4>打开，就是<br>工作文件。</h4><p>固定 16:9、零运行时依赖的单文件 Deck，可以直接在浏览器中继续处理。</p></li>
+            <li class="cinema-beat" data-cinema-beat="1"><span>02 / EDIT · E</span><h4>按 E，直接<br>修改内容。</h4><p>标题和正文进入直接编辑状态；选中文字后，用格式栏调整字形。</p></li>
+            <li class="cinema-beat" data-cinema-beat="2"><span>03 / ORGANIZE · O</span><h4>按 O，重排<br>整份 Deck。</h4><p>页面管理器支持重排、添加、复制、删除，并提供 Export HTML。</p></li>
+            <li class="cinema-beat" data-cinema-beat="3"><span>04 / EXPORT</span><h4>把当前修改<br>带回交付。</h4><p>导出当前 DOM 为可下载的 HTML，浏览器里的修改会进入工作文件。</p></li>
           </ol>
+          <div class="cinema-gallery" aria-label="Slide Studio 真实界面状态">
+            <figure><img src="assets/slide-studio/live-cover.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio 打开后的封面幻灯片与浏览器编辑工具栏"><figcaption><span>01 / OPEN</span>打开后的单文件 Deck</figcaption></figure>
+            <figure><img src="assets/slide-studio/inline-text-editing.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio E 模式中直接编辑标题并显示文字格式栏"><figcaption><span>02 / EDIT · E</span>直接编辑标题与字形</figcaption></figure>
+            <figure><img src="assets/slide-studio/organizer-page-management.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio O 模式的页面管理器，包含重排、添加、复制、删除与导出操作"><figcaption><span>03 / ORGANIZE · O</span>管理页面并导出 HTML</figcaption></figure>
+            <figure><img src="assets/slide-studio/organizer-reordered.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio 页面管理器完成页面重排后的真实状态"><figcaption><span>03B / REORDER</span>重排后的页面顺序</figcaption></figure>
+            <figure><img src="assets/slide-studio/export-flow.png" width="1440" height="900" loading="lazy" decoding="async" alt="Slide Studio 导出流程所使用的真实幻灯片状态"><figcaption><span>04 / EXPORT</span>将当前 DOM 导出为 HTML</figcaption></figure>
+          </div>
         </div>
+        <ul class="cinema-facts" aria-label="Slide Studio 已验证能力"><li><span>FILE</span><strong>单文件 · 固定 16:9 · 零运行时</strong></li><li><span>E</span><strong>直接编辑文字与字形</strong></li><li><span>O</span><strong>重排 · 添加 · 复制 · 删除 · Export HTML</strong></li><li><span>G</span><strong>打开可选背景工具</strong></li></ul>
         <footer class="project-cinema-footer">
-          <p class="boundary-note"><span>BOUNDARY</span> PPTX 提取只作为结构化起点；可选生图能力需要用户自己的兼容 API。</p>
+          <p class="boundary-note"><span>BOUNDARY</span> G 的可选背景能力需要用户自己的兼容 API；导出对象是由当前 DOM 生成的 HTML 文件。</p>
           <div class="project-links"><a href="https://github.com/Ying-A1/slide-studio" target="_blank" rel="noopener noreferrer">查看源码 ↗</a><a href="https://ying-a1.github.io/slide-studio/" target="_blank" rel="noopener noreferrer">打开演示 ↗</a></div>
         </footer>
       </article>

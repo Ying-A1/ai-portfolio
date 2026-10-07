@@ -65,11 +65,54 @@
     chapters.forEach((chapter) => chapterObserver.observe(chapter));
     const topSentinel = document.querySelector('#top');
     if (topSentinel) new IntersectionObserver(([entry]) => header?.classList.toggle('is-scrolled', !entry.isIntersecting), { rootMargin: '-80px 0px 0px' }).observe(topSentinel);
-    const slide = document.querySelector('.slide-artifact');
-    if (slide) new IntersectionObserver(([entry], observer) => { if (entry.isIntersecting) { slide.classList.add('is-visible'); observer.disconnect(); } }, { threshold: .18 }).observe(slide);
-  } else {
-    document.querySelector('.slide-artifact')?.classList.add('is-visible');
   }
+
+  const cinema = document.querySelector('[data-project-cinema]');
+  const cinemaBeats = [...document.querySelectorAll('[data-cinema-beat]')];
+  const cinemaStateLabel = document.querySelector('.cinema-stage-state');
+  const cinemaCaptionStep = document.querySelector('.cinema-stage-caption span');
+  const cinemaNames = ['GENERATE', 'EDIT', 'ORGANIZE', 'EXPORT'];
+  const cinemaNarrowQuery = matchMedia('(max-width: 760px)');
+  let cinemaObserver;
+  let cinemaTitleObserver;
+  const setCinemaState = (state) => {
+    if (!cinema) return;
+    const next = Math.max(0, Math.min(cinemaBeats.length - 1, Number(state) || 0));
+    cinema.dataset.cinemaState = String(next);
+    cinemaBeats.forEach((beat, index) => {
+      const active = index === next;
+      beat.classList.toggle('is-active', active);
+      if (active) beat.setAttribute('aria-current', 'step'); else beat.removeAttribute('aria-current');
+    });
+    const step = String(next + 1).padStart(2, '0');
+    if (cinemaStateLabel) cinemaStateLabel.textContent = `${step} · ${cinemaNames[next]}`;
+    if (cinemaCaptionStep) cinemaCaptionStep.textContent = `${step} / 04`;
+  };
+  const configureCinema = () => {
+    cinemaObserver?.disconnect();
+    cinemaTitleObserver?.disconnect();
+    if (!cinema) return;
+    const staticCinema = reduceQuery.matches || cinemaNarrowQuery.matches || !('IntersectionObserver' in window);
+    cinema.classList.toggle('is-static', staticCinema);
+    if (staticCinema) {
+      cinema.classList.add('is-title-visible');
+      setCinemaState(0);
+      return;
+    }
+    cinemaTitleObserver = new IntersectionObserver(([entry], observer) => {
+      if (entry.isIntersecting) {
+        cinema.classList.add('is-title-visible');
+        observer.disconnect();
+      }
+    }, { threshold: .28 });
+    cinemaTitleObserver.observe(cinema.querySelector('.project-cinema-header'));
+    cinemaObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setCinemaState(visible.target.dataset.cinemaBeat);
+    }, { rootMargin: '-35% 0px -35% 0px', threshold: [0, .01] });
+    cinemaBeats.forEach((beat) => cinemaObserver.observe(beat));
+    setCinemaState(0);
+  };
 
   document.querySelectorAll('[data-atlas-state] button').forEach((button) => {
     button.addEventListener('click', () => {
@@ -104,24 +147,12 @@
   });
   if (tabs.length) selectProject(tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')?.dataset.projectTab || tabs[0].dataset.projectTab);
 
-  const settlePointer = (() => {
-    let timer = 0;
-    const hero = document.querySelector('.hero');
-    if (!hero || matchMedia('(pointer: coarse)').matches || reduceQuery.matches) return () => {};
-    const move = (event) => {
-      const bend = Math.max(-10, Math.min(10, (event.clientX / innerWidth - .5) * 20));
-      document.querySelector('#evidenceThread').style.transform = `translateX(${bend.toFixed(1)}px)`;
-      clearTimeout(timer);
-      timer = setTimeout(() => { document.querySelector('#evidenceThread').style.transform = ''; }, 380);
-    };
-    hero.addEventListener('pointermove', move, { passive: true });
-    return () => hero.removeEventListener('pointermove', move);
-  })();
-
-  const updateMedia = () => setThread(activeChapter);
+  const updateMedia = () => { setThread(activeChapter); configureCinema(); };
   narrowQuery.addEventListener?.('change', updateMedia);
-  reduceQuery.addEventListener?.('change', () => { if (reduceQuery.matches) settlePointer(); });
+  cinemaNarrowQuery.addEventListener?.('change', configureCinema);
+  reduceQuery.addEventListener?.('change', configureCinema);
   document.body.dataset.currentChapter = 'hero';
   setThread('hero');
+  configureCinema();
   requestAnimationFrame(() => root.classList.add('is-ready'));
 })();

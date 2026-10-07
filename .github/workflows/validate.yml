@@ -20,11 +20,11 @@ jobs:
         run: |
           set -euo pipefail
           test -s outputs/index.html
-          test -s outputs/evidence-atlas.css
-          test -s outputs/evidence-atlas.js
+          test -s outputs/the-cut.css
+          test -s outputs/the-cut.js
 
       - name: Check JavaScript syntax
-        run: node --check outputs/evidence-atlas.js
+        run: node --check outputs/the-cut.js
 
       - name: Check anchors and local assets
         shell: bash
@@ -35,7 +35,7 @@ jobs:
 
           const root = process.cwd();
           const htmlPath = path.join(root, 'outputs/index.html');
-          const cssPath = path.join(root, 'outputs/evidence-atlas.css');
+          const cssPath = path.join(root, 'outputs/the-cut.css');
           const html = fs.readFileSync(htmlPath, 'utf8');
           const css = fs.readFileSync(cssPath, 'utf8');
           const errors = [];

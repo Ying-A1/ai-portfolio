@@ -1,8 +1,8 @@
-# AI / Portfolio
+# THE CUT / AI Portfolio
 
-孙颖的 AI 作品集：AI 产品判断、AI 协作开发、开源项目与 AI Native 研究。站点采用原生 HTML、CSS 与 JavaScript，可直接维护和部署。
+孙颖的 AI 作品集：以五幕项目电影呈现 AI、Agent、Harness、开源项目与 AI Native 研究。站点采用原生 HTML、CSS 与 JavaScript，可直接维护和部署。
 
-此仓库维护公开作品集源文件，并通过 GitHub Pages 发布。页面只展示可公开核验的项目、研究判断与经历范围。
+此仓库维护作品集源文件，并通过 GitHub Pages 发布。页面只展示已核对且适合公开的项目事实、研究范围与经历概述。
 
 ## 目录
 
@@ -15,13 +15,13 @@
 │       └── validate.yml
 └── outputs/
     ├── index.html
-    ├── evidence-atlas.css
-    ├── evidence-atlas.js
+    ├── the-cut.css
+    ├── the-cut.js
     └── assets/
         └── ...
 ```
 
-当前视觉以真实项目截图、排版和贯穿页面的 SVG 证据线为核心。旧的生成素材仍保留在资源目录，但没有进入页面 DOM。
+当前视觉以电影片头、共享叙事舞台和真实 Slide Studio 界面为核心。GPT Image 2 生成的无文字材料只承担片头与系统剖面的氛围；所有文字仍由 HTML 排版，产品能力仍由真实截图和可核验文字表达。页面只引用 `the-cut.css` 和 `the-cut.js`。
 
 ## 本地预览
 
@@ -35,19 +35,19 @@ python3 -m http.server 8000
 
 ## 内容结构
 
-- AI 视角：从模型能力、工作系统、AI to B 的价值与信任谈起
+- AI 视角：AI 理解上下文，Agent 进入行动，Harness 管理状态、权限与验证
 - AI 协作开发：一手材料、目标界定、仓库实现与结果验证
 - 项目经历：Slide Studio、Miaoda Game Remix、Transcript Fidelity、Personal Agent 与 AI Native 系统研究
 - 个人经历：百度与字节跳动的 AI 产品、Agent、评测和交付经历
 
-页面只使用姓名“孙颖”，并收敛其余个人信息。项目按 `Open Source`、`Android Prototype`、`Research Direction` 标示证据边界。
+页面个人信息只使用姓名“孙颖”，不展示学校、学历、联系方式、客户信息或凭证。项目按 `Open Source`、`Android Prototype`、`Research Direction` 标示事实与验证边界。
 
 ## 更新方式
 
-这是一个可以持续用 Git 维护的静态站点。内容结构在 `outputs/index.html`，视觉在 `outputs/evidence-atlas.css`，交互在 `outputs/evidence-atlas.js`。确认浏览器效果后提交：
+这是一个可以持续用 Git 维护的静态站点。内容结构在 `outputs/index.html`，视觉在 `outputs/the-cut.css`，交互在 `outputs/the-cut.js`。确认浏览器效果后提交：
 
 ```bash
-git add README.md outputs/index.html outputs/evidence-atlas.css outputs/evidence-atlas.js outputs/assets/slide-studio-cover.png
+git add .github/workflows/validate.yml README.md outputs/index.html outputs/the-cut.css outputs/the-cut.js outputs/assets/the-cut-context-field.webp outputs/assets/the-cut-agent-cutaway.webp outputs/assets/slide-studio/
 git commit -m "更新作品集"
 ```
 

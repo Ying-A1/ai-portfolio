@@ -36,9 +36,8 @@ python3 -m http.server 8000
 ## 内容结构
 
 - AI 视角：从模型能力、工作系统、AI to B 的价值与信任谈起
-- AI 协作开发：一手材料、架构拆解、仓库实现、测试与浏览器验证、Git 维护
+- AI 协作开发：一手材料、目标界定、仓库实现与结果验证
 - 项目经历：Slide Studio、Miaoda Game Remix、Transcript Fidelity、Personal Agent 与 AI Native 系统研究
-- 前沿观察：原始来源、小实验与个人表达形成的学习方法
 - 个人经历：百度与字节跳动的 AI 产品、Agent、评测和交付经历
 
 页面只使用姓名“孙颖”，并收敛其余个人信息。项目按 `Open Source`、`Android Prototype`、`Research Direction` 标示证据边界。

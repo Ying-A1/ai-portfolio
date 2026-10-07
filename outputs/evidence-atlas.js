@@ -20,7 +20,7 @@
     method: 'M20 0 C20 17 20 23 34 29 S67 40 67 51 S20 68 20 100',
     view: 'M76 0 C76 18 73 24 56 30 S27 42 43 54 S74 72 76 100',
     experience: 'M19 0 C19 22 19 27 38 35 S62 50 44 61 S19 76 19 100',
-    finale: 'M78 0 C78 26 78 40 60 50 S42 61 42 72 S60 88 78 100'
+    finale: 'M78 0 C91 10 95 20 95 34 S95 65 94 76 S86 92 78 100'
   };
   const mobileShape = 'M18 0 C18 18 18 25 18 38 S18 65 18 100';
   const setThread = (chapter) => {
@@ -50,6 +50,7 @@
   const activateChapter = (name) => {
     if (!name || name === activeChapter) return;
     activeChapter = name;
+    document.body.dataset.currentChapter = name;
     setThread(name);
     navLinks.forEach((link) => {
       const current = link.hash === '#' + (name === 'hero' ? 'top' : name);
@@ -121,6 +122,7 @@
   const updateMedia = () => setThread(activeChapter);
   narrowQuery.addEventListener?.('change', updateMedia);
   reduceQuery.addEventListener?.('change', () => { if (reduceQuery.matches) settlePointer(); });
+  document.body.dataset.currentChapter = 'hero';
   setThread('hero');
   requestAnimationFrame(() => root.classList.add('is-ready'));
 })();

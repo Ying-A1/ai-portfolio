@@ -1,0 +1,79 @@
+name: Validate portfolio
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s outputs/index.html
+          test -s outputs/evidence-atlas.css
+          test -s outputs/evidence-atlas.js
+
+      - name: Check JavaScript syntax
+        run: node --check outputs/evidence-atlas.js
+
+      - name: Check anchors and local assets
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const root = process.cwd();
+          const htmlPath = path.join(root, 'outputs/index.html');
+          const cssPath = path.join(root, 'outputs/evidence-atlas.css');
+          const html = fs.readFileSync(htmlPath, 'utf8');
+          const css = fs.readFileSync(cssPath, 'utf8');
+          const errors = [];
+
+          const ids = new Set(
+            [...html.matchAll(/\sid=["']([^"']+)["']/g)].map((match) => match[1])
+          );
+
+          for (const match of html.matchAll(/\shref=["']#([^"']+)["']/g)) {
+            if (!ids.has(match[1])) errors.push(`Missing anchor target: #${match[1]}`);
+          }
+
+          const references = [
+            ...[...html.matchAll(/\s(?:href|src)=["']([^"']+)["']/g)].map((match) => ({
+              value: match[1],
+              source: htmlPath,
+            })),
+            ...[...css.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/g)].map((match) => ({
+              value: match[1],
+              source: cssPath,
+            })),
+          ];
+
+          const ignored = /^(?:#|data:|https?:|mailto:|tel:|javascript:)/i;
+          for (const reference of references) {
+            if (ignored.test(reference.value)) continue;
+            const clean = reference.value.split(/[?#]/, 1)[0];
+            if (!clean) continue;
+            const target = path.resolve(path.dirname(reference.source), clean);
+            if (!fs.existsSync(target)) {
+              errors.push(`Missing local file: ${path.relative(root, target)} (from ${path.relative(root, reference.source)})`);
+            }
+          }
+
+          if (errors.length) {
+            console.error(errors.join('\n'));
+            process.exit(1);
+          }
+
+          console.log(`Validated ${ids.size} anchors and ${references.length} references.`);
+          NODE

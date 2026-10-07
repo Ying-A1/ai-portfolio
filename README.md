@@ -2,6 +2,8 @@
 
 孙颖的 AI 作品集：AI 产品判断、AI 协作开发、开源项目与 AI Native 研究。站点采用原生 HTML、CSS 与 JavaScript，可直接维护和部署。
 
+此仓库维护公开作品集源文件，并通过 GitHub Pages 发布。页面只展示可公开核验的项目、研究判断与经历范围。
+
 ## 目录
 
 ```text
@@ -10,17 +12,16 @@
 ├── .gitignore
 ├── .github/
 │   └── workflows/
-│       └── pages.yml
+│       └── validate.yml
 └── outputs/
     ├── index.html
-    ├── styles.css
-    ├── app.js
+    ├── evidence-atlas.css
+    ├── evidence-atlas.js
     └── assets/
-        ├── slide-studio-cover.png
-        └── hero-signal.png
+        └── ...
 ```
 
-页面中的 `data-generated-asset` 标记是可替换的 GPT Image 2 素材位。即使尚未放入生成图，CSS 视觉也会完整显示；后续可将无文字、无 Logo 的背景素材接入这些位置。
+当前视觉以真实项目截图、排版和贯穿页面的 SVG 证据线为核心。旧的生成素材仍保留在资源目录，但没有进入页面 DOM。
 
 ## 本地预览
 
@@ -40,25 +41,26 @@ python3 -m http.server 8000
 - 前沿观察：原始来源、小实验与个人表达形成的学习方法
 - 个人经历：百度与字节跳动的 AI 产品、Agent、评测和交付经历
 
-公开页面只使用姓名“孙颖”，并收敛其余个人信息。项目按 `Open Source`、`Android Prototype`、`Research Direction` 标示证据边界。
+页面只使用姓名“孙颖”，并收敛其余个人信息。项目按 `Open Source`、`Android Prototype`、`Research Direction` 标示证据边界。
 
 ## 更新方式
 
-这是一个可以持续用 Git 维护的静态站点。内容结构在 `outputs/index.html`，视觉在 `outputs/styles.css`，交互在 `outputs/app.js`。确认浏览器效果后提交：
+这是一个可以持续用 Git 维护的静态站点。内容结构在 `outputs/index.html`，视觉在 `outputs/evidence-atlas.css`，交互在 `outputs/evidence-atlas.js`。确认浏览器效果后提交：
 
 ```bash
-git add README.md outputs/index.html outputs/styles.css outputs/app.js outputs/assets
+git add README.md outputs/index.html outputs/evidence-atlas.css outputs/evidence-atlas.js outputs/assets/slide-studio-cover.png
 git commit -m "更新作品集"
 ```
 
-如果后续配置了 GitHub 远程仓库，再按仓库地址添加 `origin` 并推送：
+更新前先确认目标分支和 Diff，再推送：
 
 ```bash
-git remote add origin <your-github-repository-url>
-git push -u origin main
+git status --short --branch
+git diff --check
+git push origin main
 ```
 
-当前仓库不依赖 npm、打包器或外部资源。`.github/workflows/pages.yml` 会在 `main` 分支更新时将 `outputs/` 目录发布到 GitHub Pages，也可以在 GitHub Actions 中手动触发。
+当前仓库不依赖 npm、打包器或外部运行时资源。`.github/workflows/validate.yml` 检查入口文件、JavaScript 语法、页面锚点及本地素材引用；`.github/workflows/pages.yml` 负责公开 Pages 发布。
 
 ## 发布前检查
 
@@ -66,3 +68,4 @@ git push -u origin main
 - 在桌面与移动端浏览器检查导航、锚点、排版和可读性
 - 在桌面与移动端确认控制台无报错，键盘焦点与减弱动效模式可用
 - 发布前运行 `git diff --check`，避免提交空白字符错误
+- 使用 `python3 -m http.server 8000` 从仓库根目录预览，不把本地文件路径或失效的 Pages 地址作为对外链接

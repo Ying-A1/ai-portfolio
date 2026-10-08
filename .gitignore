@@ -11,6 +11,3 @@ Thumbs.db
 
 # Playwright CLI artifacts
 .playwright-cli/
-
-# Local design research and visual review artifacts
-work/

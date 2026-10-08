@@ -7,7 +7,6 @@
   const chapters = [...document.querySelectorAll('[data-chapter]')];
   const thread = document.querySelector('#threadPath');
   const threadShadow = document.querySelector('.thread-shadow');
-  const reduceQuery = matchMedia('(prefers-reduced-motion: reduce)');
   const narrowQuery = matchMedia('(max-width: 620px)');
   const year = document.querySelector('#year');
   if (year) year.textContent = new Date().getFullYear();
@@ -67,62 +66,6 @@
     if (topSentinel) new IntersectionObserver(([entry]) => header?.classList.toggle('is-scrolled', !entry.isIntersecting), { rootMargin: '-80px 0px 0px' }).observe(topSentinel);
   }
 
-  const cinema = document.querySelector('[data-project-cinema]');
-  const cinemaBeats = [...document.querySelectorAll('[data-cinema-beat]')];
-  const cinemaFrames = [...document.querySelectorAll('[data-cinema-frame]')];
-  const cinemaStateLabel = document.querySelector('.cinema-stage-state');
-  const cinemaCaptionStep = document.querySelector('.cinema-stage-caption span');
-  const cinemaCaptionCopy = document.querySelector('.cinema-stage-caption-copy');
-  const cinemaNames = ['OPEN', 'EDIT', 'ORGANIZE', 'EXPORT'];
-  const cinemaCaptions = ['打开后的单文件 Deck', '直接编辑标题与字形', '管理页面并导出 HTML', '将当前 DOM 导出为 HTML'];
-  const cinemaNarrowQuery = matchMedia('(max-width: 760px)');
-  let cinemaObserver;
-  let cinemaTitleObserver;
-  const setCinemaState = (state) => {
-    if (!cinema) return;
-    const next = Math.max(0, Math.min(cinemaBeats.length - 1, Number(state) || 0));
-    cinema.dataset.cinemaState = String(next);
-    cinemaBeats.forEach((beat, index) => {
-      const active = index === next;
-      beat.classList.toggle('is-active', active);
-      if (active) beat.setAttribute('aria-current', 'step'); else beat.removeAttribute('aria-current');
-    });
-    cinemaFrames.forEach((frame, index) => {
-      const active = index === next;
-      frame.classList.toggle('is-active', active);
-      if (active) frame.removeAttribute('aria-hidden'); else frame.setAttribute('aria-hidden', 'true');
-    });
-    const step = String(next + 1).padStart(2, '0');
-    if (cinemaStateLabel) cinemaStateLabel.textContent = `${step} · ${cinemaNames[next]}`;
-    if (cinemaCaptionStep) cinemaCaptionStep.textContent = `${step} / 04`;
-    if (cinemaCaptionCopy) cinemaCaptionCopy.textContent = cinemaCaptions[next];
-  };
-  const configureCinema = () => {
-    cinemaObserver?.disconnect();
-    cinemaTitleObserver?.disconnect();
-    if (!cinema) return;
-    const staticCinema = reduceQuery.matches || cinemaNarrowQuery.matches || !('IntersectionObserver' in window);
-    cinema.classList.toggle('is-static', staticCinema);
-    if (staticCinema) {
-      cinema.classList.add('is-title-visible');
-      setCinemaState(0);
-      return;
-    }
-    cinemaTitleObserver = new IntersectionObserver(([entry], observer) => {
-      if (entry.isIntersecting) {
-        cinema.classList.add('is-title-visible');
-        observer.disconnect();
-      }
-    }, { threshold: .28 });
-    cinemaTitleObserver.observe(cinema.querySelector('.project-cinema-header'));
-    cinemaObserver = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) setCinemaState(visible.target.dataset.cinemaBeat);
-    }, { rootMargin: '-35% 0px -35% 0px', threshold: [0, .01] });
-    cinemaBeats.forEach((beat) => cinemaObserver.observe(beat));
-    setCinemaState(0);
-  };
-
   document.querySelectorAll('[data-atlas-state] button').forEach((button) => {
     button.addEventListener('click', () => {
       document.querySelectorAll('[data-atlas-state]').forEach((node) => {
@@ -156,12 +99,9 @@
   });
   if (tabs.length) selectProject(tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')?.dataset.projectTab || tabs[0].dataset.projectTab);
 
-  const updateMedia = () => { setThread(activeChapter); configureCinema(); };
+  const updateMedia = () => { setThread(activeChapter); };
   narrowQuery.addEventListener?.('change', updateMedia);
-  cinemaNarrowQuery.addEventListener?.('change', configureCinema);
-  reduceQuery.addEventListener?.('change', configureCinema);
   document.body.dataset.currentChapter = 'hero';
   setThread('hero');
-  configureCinema();
   requestAnimationFrame(() => root.classList.add('is-ready'));
 })();
